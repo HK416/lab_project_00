@@ -1,0 +1,21 @@
+[package]
+name = "lab_project_00"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["HK416<powerspirit127@gmail.com>"]
+description = "Implement Order Independent Transparency (OIT) using wgpu in Rust language."
+readme = "README.md"
+license = "LICENSE.md"
+publish = false
+
+
+[dependencies]
+log = "0.4.*" # MIT or Apache-2.0 license.
+env_logger = "0.11.*" # MIT or Apache-2.0 license.
+pollster = "0.3.*" # Apache-2.0 license.
+crossbeam-queue = "0.3.*" # MIT or Apache-2.0 license.
+bytemuck = { version = "1.14.*", features = ["derive"] } # Zlib or Apache-2.0 or MIT license.
+glam = { version = "0.25.*", features = ["debug-glam-assert", "bytemuck", "scalar-math"] } # MIT or Apache-2.0 license.
+winit = "0.29.*" # Apache-2.0 license.
+wgpu = "0.19.*" # MIT or Apache-2.0 license.
