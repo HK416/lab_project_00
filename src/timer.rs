@@ -46,7 +46,7 @@ impl<const NUM_SAMPLES: usize> GameTimer<NUM_SAMPLES> {
     /// 
     pub fn tick(&mut self) {
         self.current_timepoint = Instant::now();
-        let mut elapsed_time_sec = self.current_timepoint
+        let elapsed_time_sec = self.current_timepoint
             .saturating_duration_since(self.previous_timepoint)
             .as_secs_f64();
 

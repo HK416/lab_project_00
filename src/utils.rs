@@ -1,8 +1,6 @@
-use std::thread;
 use std::sync::Arc;
-use std::task::{Context, Poll};
-
 use winit::window::Window;
+
 
 
 /// #### 한국어 </br>
@@ -108,32 +106,4 @@ fn create_render_device_and_queue(adapter: &wgpu::Adapter) -> (Arc<wgpu::Device>
     )
     .map(|(device, queue)| (Arc::new(device), Arc::new(queue)))
     .unwrap()
-}
-
-/// #### 한국어 </br>
-/// 깊이-스텐실 버퍼를 생성합니다. </br>
-/// 
-/// #### English (Translation) </br>
-/// Creates a depth-stencil buffer. </br>
-/// 
-#[inline]
-fn create_depth_stencil_view(window: &Window, device: &wgpu::Device) -> Arc<wgpu::TextureView> {
-    device.create_texture(
-        &wgpu::TextureDescriptor {
-            label: Some("Depth-Stencil Buffer"), 
-            size: wgpu::Extent3d {
-                width: window.inner_size().width, 
-                height: window.inner_size().height, 
-                depth_or_array_layers: 1,
-            },
-            mip_level_count: 1, 
-            sample_count: 1, 
-            dimension: wgpu::TextureDimension::D2, 
-            format: wgpu::TextureFormat::Depth32Float, 
-            usage: wgpu::TextureUsages::RENDER_ATTACHMENT | wgpu::TextureUsages::TEXTURE_BINDING, 
-            view_formats: &[]
-        }
-    )
-    .create_view(&wgpu::TextureViewDescriptor { ..Default::default() })
-    .into()
 }
